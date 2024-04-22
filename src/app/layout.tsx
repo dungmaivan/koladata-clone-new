@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-
+import Header from "@/components/layouts/header";
+import Footer from "@/components/layouts/footer";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,7 +18,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <AntdRegistry>
+          <Header />
+          {children}
+          <Footer />
+        </AntdRegistry>
+      </body>
     </html>
   );
 }
